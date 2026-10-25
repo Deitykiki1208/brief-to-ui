@@ -1,0 +1,6 @@
+interface:
+  display_name: "Brief to UI"
+  short_description: "将简单想法转成中文后台方案，研究参考、保留清晰分组，先预览确认再局部修改"
+  default_prompt: "使用 $brief-to-ui 整理我的简单想法，研究适合的后台界面参考，给出清晰分组的预览方案，收到明确确认后再局部修改。"
+policy:
+  allow_implicit_invocation: true
