@@ -1,14 +1,14 @@
 # Brief to UI
 
-让简单想法经过参考研究、视觉确认和局部迭代，形成清晰、一致、可验证的中文业务后台界面。
+把一句想法整理成完整的页面生成提示词，确认后出预览，再经过视觉确认与局部迭代，形成清晰、一致、可验证的中文业务后台界面。
 
-An opinionated, configurable skill for turning rough ideas into reviewable Chinese admin interfaces, with explicit approval before implementation.
+An opinionated, configurable skill for turning a rough idea into a reviewable page-generation prompt, then a Chinese admin UI preview, with explicit approval before implementation.
 
-作者：Deityki。许可证：[MIT](LICENSE)。当前版本：[0.1.0](VERSION)。
+作者：Deityki。许可证：[MIT](LICENSE)。当前版本：[0.2.0](VERSION)。
 
 ## 为什么做这个 skill
 
-你可以只说“我想做一个后台，方便主管处理异常”。Brief to UI 会主动整理使用场景、主要任务、必要数据和验收标准，研究参考，给出可查看的方案，确认后再实施。
+你可以只说“我想做一个后台，方便主管处理异常”。Brief to UI 会主动整理需求并研究参考，先生成一份可复制、可修改的完整页面生成提示词。你只需判断是否符合想法，确认或补充后才生成示例图；修改业务实现另需明确批准。
 
 它优先服务中文业务后台、管理系统与内部工具。它重视成熟用语、清晰分组、适量容器和稳定的局部迭代；不会把更少卡片、更少颜色或更大留白自动当成更好的设计。
 
@@ -22,10 +22,13 @@ An opinionated, configurable skill for turning rough ideas into reviewable Chine
 
 1. 整理需求：从简单描述中提炼人群、场景、痛点、1–3 项主任务、约束与完成标准。
 2. 有针对性地研究：通常选 3–5 个相关参考，说明学习点与适用边界；已有研究足够时复用。
-3. 提供预览：先给示例图，重要动效补充可播放演示或交互原型。
-4. 明确确认：选择方向与批准修改分开理解；已有批准在范围内持续有效。
-5. 局部迭代：保持已认可的基线，只改变有理由调整的部分。
-6. 如实验收：分别说明方案、代码、验证、部署和发布状态。
+3. 确认提示词：助手补齐页面结构、内容与状态、视觉、交互和交付约束，标明关键假设，等你确认或补充。
+4. 提供预览：提示词确认后生成示例图，重要动效补充可播放演示或交互原型。
+5. 明确批准实现：确认提示词、选定图片与批准修改代码分别理解；已有批准在范围内持续有效。
+6. 局部迭代：保持已认可的提示词与视觉基线，只改变有理由调整的部分。
+7. 如实验收：分别说明提示词、预览、代码、验证、部署和发布状态。
+
+不需要自己写专业提示词。完整输入与预期输出见 [一句想法到提示词的示例](examples/idea-to-prompt/README.md)，规则见 [页面生成提示词](skills/brief-to-ui/references/page-prompt.md)。
 
 关键原则：任务与数据正确、分组与操作清晰，优先于追求装饰极简。详情见 [后台判断规则](skills/brief-to-ui/references/admin-patterns.md) 和 [协作流程](skills/brief-to-ui/references/collaboration.md)。
 
@@ -52,7 +55,8 @@ Copy-Item -LiteralPath $skillSource -Destination $skillTarget -Recurse
 ```text
 使用 $brief-to-ui
 我想做一个给运营主管使用的后台，主要处理项目异常和待审批事项
-我还没整理好需求，请你先帮我整理、找参考、给我看方案
+请先帮我整理需求、找参考，输出完整页面生成提示词
+等我确认或补充后，再生成示例图
 先不要修改代码
 ```
 
@@ -73,7 +77,7 @@ Copy-Item -LiteralPath $skillSource -Destination $skillTarget -Recurse
 ## 验证与局限
 
 - [发布结构检查](scripts/validate_release.py) 使用 Python 3 标准库，检查包结构、本地引用、来源编号、示例尺寸与明显的本机路径泄漏；它不证明 UI 可用性或设计质量。
-- [评测场景](evals/README.md) 覆盖模糊需求、确认边界、既有框架、卡片取舍、必要文案与局部实现。场景已定义，尚无跨模型独立评测结果。
+- [评测场景](evals/README.md) 覆盖模糊想法转提示词、修改与确认边界、既有框架、卡片取舍、必要文案与局部实现。场景已定义，尚无跨模型独立评测结果。
 - 静态示例图不能证明精确色值、字号、0.5px 边框、键盘操作、性能、业务数据或动效已落实。
 
 在仓库根目录运行：
