@@ -13,16 +13,18 @@ import sys
 
 
 REQUIRED = (
-    "README.md", "LICENSE", "VERSION", "UI_PROFILE.example.md",
+    "README.md", "LICENSE", "VERSION", ".gitignore", "UI_PROFILE.example.md",
     "CONTRIBUTING.md", "skills/brief-to-ui/SKILL.md",
     "skills/brief-to-ui/LICENSE.txt", "skills/brief-to-ui/agents/openai.yaml",
     "skills/brief-to-ui/references/collaboration.md",
+    "skills/brief-to-ui/references/page-prompt.md",
     "skills/brief-to-ui/references/admin-patterns.md",
     "skills/brief-to-ui/references/profiles.md",
     "skills/brief-to-ui/references/visual-foundations.md",
     "skills/brief-to-ui/references/interaction-patterns.md",
     "skills/brief-to-ui/references/resource-routing.md",
     "skills/brief-to-ui/references/sources.md",
+    "examples/idea-to-prompt/README.md",
     "examples/admin-home/README.md", "examples/admin-home/prompts.json",
     "examples/admin-home/a-preferred.png", "examples/admin-home/b-generic.png",
     "examples/admin-home/a2-cardless.png", "evals/README.md",
